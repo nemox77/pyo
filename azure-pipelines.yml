@@ -1,19 +1,17 @@
---- 
-name: pyo-CI
-trigger: 
-  branches: 
-    include: 
-      - stg
-      - main
-pool: 
-  vmImage: ubuntu-1604
-variables: 
+---
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest' # set to windows-latest or another Windows vmImage for Windows builds
+
+variables:
   imageName: 'igorka77/pyo'
-steps: 
-  - 
-    displayName: "Build an image"
-    task: Docker@1
-    inputs: 
-      Dockerfile: ./Dockerfile
-      command: build
-      repository: $(imageName)
+
+steps:
+- task: Docker@2
+  displayName: Build an image
+  inputs:
+    repository: $(imageName)
+    command: build
+    Dockerfile: ./Dockerfile
