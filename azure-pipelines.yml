@@ -1,0 +1,19 @@
+--- 
+name: Docker-CI
+trigger: 
+  branches: 
+    include: 
+      - stg
+      - main
+  pool: 
+    vmImage: ubuntu-1604
+  variables: 
+    imageName: 'igorka77/pyo'
+  steps: 
+    - 
+      displayName: "Build an image"
+      task: Docker@1
+      inputs: 
+        Dockerfile: ./Dockerfile
+        command: build
+        repository: $(imageName)
