@@ -22,7 +22,7 @@ stages:
       displayName: 'Build the Docker image'
       inputs:
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub'
+        dockerRegistryEndpoint: 'igorka77-dockerhub'
         command: 'Build an image'
         dockerFile: '**/Dockerfile'
         imageName: '$(ImageName)'
@@ -34,7 +34,7 @@ stages:
       displayName: 'Push the Docker image to Dockerhub'
       inputs:
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub'
+        dockerRegistryEndpoint: 'igorka77-dockerhub'
         command: 'Push an image'
         imageName: '$(ImageName)'
       condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
