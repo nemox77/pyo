@@ -1,4 +1,4 @@
-name: Build and Publish
+name: Build and Publish and Deploy
 
 on:
   # run it on push to the default repository branch
@@ -42,3 +42,14 @@ jobs:
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+      
+      - name: Deploy on GCE instance
+        uses: appleboy/ssh-action@master
+        with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            key: ${{ secrets.KEY }}
+            script: |
+              docker stop $(docker ps -q);
+              docker pull igorka77/pyo:latest
+              docker run -p=80:80 igorka77/pyo-app 
