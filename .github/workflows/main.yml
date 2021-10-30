@@ -52,4 +52,4 @@ jobs:
             script: |
               docker stop $(docker ps -q);
               docker pull igorka77/pyo:latest
-              docker run -p=80:80 igorka77/pyo-app 
+              docker run -p 80:80 -d igorka77/pyo 
