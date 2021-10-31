@@ -15,9 +15,5 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-RUN touch /data/result.txt
-
-RUN chown -R node:node /data
-
 EXPOSE 80
 CMD [ "node", "server.js" ]

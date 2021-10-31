@@ -1,4 +1,3 @@
-// Copyright IBM Corp. 2015. All Rights Reserved.
 // Node module: express-example-app
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
@@ -12,7 +11,7 @@ module.exports = function() {
     var app = express();
 
     app.get('/', function(req, res) {
-        fs.readFile('counter.txt', 'utf8', function(err, data) {
+        fs.readFile('/data/counter.txt', 'utf8', function(err, data) {
             if (err) throw err;
             console.log(data);
             res.json({
@@ -25,10 +24,11 @@ module.exports = function() {
 
     app.post('/', function(req, res) {
         count++;
-        res.json({
-            result: 'your request saved'
-        });
-        fs.writeFile('counter.txt', count, function(err) {
+        console.log(count)
+        fs.writeFile('/data/counter.txt', count.toString(), function(err) {
+          res.json({
+              result: 'your request saved'
+          });
             if (err) return console.log(err);
         });
     });
