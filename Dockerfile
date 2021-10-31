@@ -16,4 +16,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 80
-CMD ["chown node:node /data", "node", "server.js" ]
+CMD ["/bin/bash chown node:node /data", "node", "server.js" ]
