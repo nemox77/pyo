@@ -15,5 +15,9 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+ADD /var/containder-data/result.txt
+
+RUN chown node:node result.txt
+
 EXPOSE 80
-CMD ["/bin/bash chown node:node /data", "node", "server.js" ]
+CMD [ "node", "server.js" ]
