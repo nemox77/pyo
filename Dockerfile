@@ -15,7 +15,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-ADD /var/containder-data/result.txt /usr/src/app/
+RUN touch result.txt
 
 RUN chown node:node result.txt
 
