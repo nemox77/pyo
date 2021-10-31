@@ -52,4 +52,4 @@ jobs:
             script: |
               docker stop $(docker ps -q);
               docker pull igorka77/pyo:latest
-              docker run -d -p 80:3001 -v /var/container-data:/data igorka77/pyo
+              docker run -d -p 80:3001 -v /var/container-data:/data /bin/sh -c chown -R node:node /data igorka77/pyo
