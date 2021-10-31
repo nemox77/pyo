@@ -43,7 +43,7 @@ jobs:
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
       
-      - name: Deploy on GCE instance
+      - name: Deploy container on GCE instance
         uses: appleboy/ssh-action@master
         with:
             host: ${{ secrets.HOST }}
