@@ -12,7 +12,7 @@ module.exports = function() {
     var app = express();
 
     app.get('/', function(req, res) {
-        fs.readFile('counter.txt', 'utf8', function(err, data) {
+        fs.readFile('/data/counter.txt', 'utf8', function(err, data) {
             if (err) throw err;
             console.log(data);
             res.json({
@@ -28,7 +28,7 @@ module.exports = function() {
         res.json({
             result: 'your request saved'
         });
-        fs.writeFile('counter.txt', count, function(err) {
+        fs.writeFile('/data/counter.txt', count, function(err) {
             if (err) return console.log(err);
         });
     });
